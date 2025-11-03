@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+title: "OC3 Spar LSTM Surrogate for Short-Crested Seas"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: "Medina-Manuel"
+    given-names: "Antonio"
+    affiliation: "Universidad Politécnica de Madrid (UPM)"
+    # orcid: "https://orcid.org/0000-0002-1756-3155"
+version: "v1.0.0"
+repository-code: "https://github.com/antonio-medina-manuel/LSTM-NN-multidirectional"
+date-released: "2025-11-03"
+keywords:
+  - floating offshore wind
+  - LSTM
+  - surrogate modeling
+  - mooring tensions
+  - short-crested seas
+license: Apache-2.0
+preferred-citation:
+  type: article
+  title: "Prediction of motions and mooring tensions for the OC3 spar in multidirectional seas using a LSTM NN model, with application to fatigue damage assessment"
+  authors:
+    - family-names: "Medina-Manuel"
+      given-names: "Antonio"
+    - family-names: "Molina Sánchez"
+      given-names: "Rafael"
+    - family-names: "Bulian"
+      given-names: "Gabriele"
+    - family-names: "Souto-Iglesias"
+      given-names: "Antonio"
+  year: 2025
+  identifiers:
+  - type: doi
+    value: 10.5281/zenodo.XXXXXXX

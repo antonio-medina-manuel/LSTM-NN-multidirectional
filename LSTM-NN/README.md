@@ -1,7 +1,7 @@
 # LSTM Model for FOWTs inference
 This directory contains the source code for reproducibility of an early fusion surrogate model to predict FOWT responses from wave time series.
 ## Features
-- HDF5 I/O compatible with SONG/OpenFAST-style exports
+- HDF5 I/O compatible with OpenFAST-style exports
 - Min–max normalization via JSON (same stats used during training)
 - Sequence-to-sequence or sequence-to-one prediction
 - Optional evaluation & CSV export

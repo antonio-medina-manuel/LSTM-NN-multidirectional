@@ -6,7 +6,7 @@ authors:
   - family-names: "Medina-Manuel"
     given-names: "Antonio"
     affiliation: "Universidad Politécnica de Madrid (UPM)"
-    # orcid: "https://orcid.org/0000-0002-1756-3155"
+    orcid: "https://orcid.org/0000-0002-1756-3155"
 version: "v1.0.0"
 repository-code: "https://github.com/antonio-medina-manuel/LSTM-NN-multidirectional"
 date-released: "2025-11-03"
@@ -16,10 +16,15 @@ keywords:
   - surrogate modeling
   - mooring tensions
   - short-crested seas
+  - OpenFAST
+  - SeaState
+contact:
+  - name: "Antonio Medina-Manuel"
+    email: antonio.medina.manuel@upm.es
 license: Apache-2.0
 preferred-citation:
   type: article
-  title: "Prediction of motions and mooring tensions for the OC3 spar in multidirectional seas using a LSTM NN model, with application to fatigue damage assessment"
+  title: "Prediction of motions and mooring tensions for the OC3 spar in multidirectional seas using an LSTM NN model, with application to fatigue damage assessment"
   authors:
     - family-names: "Medina-Manuel"
       given-names: "Antonio"
@@ -30,5 +35,11 @@ preferred-citation:
     - family-names: "Souto-Iglesias"
       given-names: "Antonio"
   year: 2025
-  identifiers:
-    - type: doi
+  # doi: 10.xxxx/xxxxx
+  # url: https://arxiv.org/abs/xxxxx
+references:
+  - type: software
+    title: "OpenFAST (SeaState module)"
+    authors:
+      - name: "NREL and contributors"
+    repository-code: "https://github.com/OpenFAST/openfast"

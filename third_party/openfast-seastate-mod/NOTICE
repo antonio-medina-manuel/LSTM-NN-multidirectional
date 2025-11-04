@@ -1,0 +1,10 @@
+This product includes modified portions of the OpenFAST SeaState module.
+Original work: National Renewable Energy Laboratory (NREL) and contributors.
+Source: https://github.com/OpenFAST/openfast (modules/seastate)
+License: Apache License 2.0 — see LICENSE-OPENFAST.
+
+MODIFICATIONS by Antonio Medina-Manuel (UPM):
+- Implemented equal-energy directional discretization for short-crested seas
+- Fixed normalization of D(theta) consistent with F(theta)
+- Minor refactoring for I/O defaults
+Date: 2025-11-03

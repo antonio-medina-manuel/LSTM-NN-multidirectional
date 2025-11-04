@@ -43,3 +43,4 @@ references:
     authors:
       - name: "NREL and contributors"
     repository-code: "https://github.com/OpenFAST/openfast"
+    version: "v4.1.2"

@@ -13,7 +13,7 @@ main_fowt_lstm.py \python predict_fowt_lstm.py \
   --inputs-h5 data/inputs.h5 \
   --outputs-h5 data/outputs.h5 \
   --dof heave \
-  --norm-json configs/norm_heave.json \
+  --norm-json configs/normalizationjson \
   --checkpoint models/heave_epoch20.pt \
   --out-h5 predictions.h5 \
   --multi-dir --dir-num 5 \

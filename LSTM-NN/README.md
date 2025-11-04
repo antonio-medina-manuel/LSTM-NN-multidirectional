@@ -9,9 +9,19 @@ This directory contains the source code for reproducibility of an early fusion s
 ## Quickstart
 
 ```bash
-main_fowt_lstm.py \
+main_fowt_lstm.py \python predict_fowt_lstm.py \
   --inputs-h5 data/inputs.h5 \
-  --norm-json configs/norm_relwave.json \
-  --checkpoint models/relwave_seq50.pt \
+  --outputs-h5 data/outputs.h5 \
+  --dof heave \
+  --norm-json configs/norm_heave.json \
+  --checkpoint models/heave_epoch20.pt \
   --out-h5 predictions.h5 \
-  --seq-len 50 --batch-size 64 --hidden-size 64 --num-layers 5 --dropout 0.7 --seq2seq
+  --multi-dir --dir-num 5 \
+  --interp-N 40 \
+  --seq-len 80 \
+  --batch-size 64 \
+  --hidden-size 128 \
+  --num-layers 5 \
+  --dropout 0.3 \
+  --use-custom-pinn \
+  --nn-pyc private_bin/nn_models.cpython-310.pyc

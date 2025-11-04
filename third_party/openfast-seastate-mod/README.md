@@ -3,7 +3,7 @@
 This directory contains **modifications** to the OpenFAST **SeaState** module.
 
 - **Source**: https://github.com/OpenFAST/openfast (path: `modules/seastate`)
-- **Original commit/tag**: `<exact OpenFAST hash or tag you modified>`
+- **Original commit/tag**: `v4.1.2` (`40b94af`) 
 - **Original licence**: Apache-2.0 (see `LICENSE-OPENFAST`)
 - **Changeset**: see `NOTICE`
 

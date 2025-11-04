@@ -13,7 +13,7 @@ main_fowt_lstm.py \python predict_fowt_lstm.py \
   --inputs-h5 data/inputs.h5 \
   --outputs-h5 data/outputs.h5 \
   --dof heave \
-  --norm-json configs/normalizationjson \
+  --norm-json configs/normalization.json \
   --checkpoint models/heave_epoch20.pt \
   --out-h5 predictions.h5 \
   --multi-dir --dir-num 5 \
@@ -23,5 +23,4 @@ main_fowt_lstm.py \python predict_fowt_lstm.py \
   --hidden-size 128 \
   --num-layers 5 \
   --dropout 0.3 \
-  --use-custom-pinn \
   --nn-pyc private_bin/nn_models.cpython-310.pyc

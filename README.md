@@ -9,6 +9,7 @@ The surrogate is trained on a synthetic database of **OpenFAST** simulations and
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 **Key contributions** (high-level):
+
 Early-fusion **LSTM** that ingests the per-direction **wave elevation time series** for Nd headings (plus wind channels) and outputs coupled motions + fairlead tensions.
 **Short-crested seas** synthesized with cosine-power spreading, discretized by **equal-energy** quadrature into **Nd** representative directions (typically Nd≈5).
 **SeaState I/O tweak** to output **per-direction** free-surface elevation time series (besides the composite), enabling supervised training with directional inputs.

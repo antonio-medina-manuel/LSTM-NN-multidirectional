@@ -8,7 +8,7 @@ for the **OC3 spar** under **short-crested seas**.
 Directional spreading is represented by **cosine-power** distributions discretized via the **equal-energy** method into a finite set of incident headings. The surrogate is trained on a synthetic database of **OpenFAST** simulations and then used for fast predictions (fatigue-grade post-processing included).
 
 The repository is contains:
-- The main LSTM network code with additional datasets in the folder `third_party`
+- The main LSTM network code with additional datasets in the folder `LSTM_NN`
 - The modified version of the Seastate source code in `third_party`
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)

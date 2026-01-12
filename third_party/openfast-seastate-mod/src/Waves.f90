@@ -621,8 +621,10 @@ SUBROUTINE VariousWaves_Init ( InitInp, InitOut, WaveField, FileName, ErrStat, E
    TYPE(Waves_InitInputType),       INTENT(IN   )  :: InitInp     ! Input data for initialization routine
    TYPE(Waves_InitOutputType),      INTENT(INOUT)  :: InitOut     ! Output data
    TYPE(SeaSt_WaveFieldType),       INTENT(INOUT)  :: WaveField   ! SeaState wave field type containing the wave field data
-   ! ---ANTONIO---
+   ! ------
+   ! Modified by Antonio Medina: 10-08-2025 
    CHARACTER(*), 					INTENT(IN)     :: FileName    ! Track the input file name
+   ! ------
    INTEGER(IntKi),                  INTENT(  OUT)  :: ErrStat     ! Error status of the operation
    CHARACTER(*),                    INTENT(  OUT)  :: ErrMsg      ! Error message if ErrStat /= ErrID_None
 
@@ -663,7 +665,8 @@ SUBROUTINE VariousWaves_Init ( InitInp, InitOut, WaveField, FileName, ErrStat, E
    REAL(SiKi), ALLOCATABLE      :: WaveAcc0V (:,:)          ! Instantaneous vertical   acceleration of incident waves before applying stretching at the zi-coordinates for points (m/s^2)
    REAL(SiKi), ALLOCATABLE      :: WaveDynP0B(:,:)          ! Instantaneous dynamic pressure        of incident waves before applying stretching at the zi-coordinates for points (N/m^2)
    
-   !! --ANTONIO--
+   ! ------
+   ! Modified by Antonio Medina: 04-05-2025
    INTEGER						:: d						! Direction‐bin index of the nearest direction in WvTheta corresponding to WaveField%WaveDirArr(I)
    REAL(SiKi), ALLOCATABLE 		:: WvTheta(:), dtheta(:)
    INTEGER                      :: ucount
@@ -682,6 +685,7 @@ SUBROUTINE VariousWaves_Init ( InitInp, InitOut, WaveField, FileName, ErrStat, E
    CHARACTER(20) 				:: tempStr					! Temporal string for headers
    REAL(SiKi) 					:: H, phi					! Amplitude and phases for Comp file
    REAL(SiKi)           		:: factor                   ! Per‐direction time series
+   ! ------
 	   
    COMPLEX(SiKi)                :: WaveElevxiPrime0
    REAL(SiKi), ALLOCATABLE      :: WaveKinzi0Prime(:)       ! zi-coordinates for points where the incident wave kinematics will be computed before applying stretching; these are relative to the mean see level (meters)
@@ -906,7 +910,8 @@ SUBROUTINE VariousWaves_Init ( InitInp, InitOut, WaveField, FileName, ErrStat, E
    !> #  Multi Directional Waves
    call CalculateWaveDirection(InitInp, InitOut, WaveField, ErrStatTmp, ErrMsgTmp); if (Failed()) return;
    
-   !! ---ANTONIO---
+   !! -----
+   ! Modified by Antonio Medina: 04-05-2025
    ! Allocate the new array for directional contributions and Fourier coefficients after know numbr of directions
    ALLOCATE ( WvTheta                 (1:InitOut%WaveNDir),                          STAT=ErrStatTmp)
    ALLOCATE ( dtheta                  (1:InitOut%WaveNDir),                          STAT=ErrStatTmp)
@@ -1078,7 +1083,8 @@ SUBROUTINE VariousWaves_Init ( InitInp, InitOut, WaveField, FileName, ErrStat, E
    if (FailedFFT('WaveField%WaveElev0'  )) return;
    
 !! ==========================================================
-   ! --- ANTONIO ----
+   ! -------
+   ! Modified by ANtonio Medina: 10-05-2025
 	
    ! Allocate and compute directional angles and spreading constant (if spreading)
    IF (WaveField%WaveMod == WaveMod_UserFreq) THEN
@@ -1622,13 +1628,14 @@ CONTAINS
       IF (ALLOCATED( WaveVelC0V ))        DEALLOCATE( WaveVelC0V,       STAT=ErrStatTmp)
       IF (ALLOCATED( tmpComplexArr ))     DEALLOCATE( tmpComplexArr,    STAT=ErrStatTmp)
 
-!---ANTONIO---
+!------
+! Modified by Antonio Medina: 10-06-2025
 	  IF (ALLOCATED( WvTheta ))           DEALLOCATE( WvTheta,          STAT=ErrStatTmp)
       IF (ALLOCATED( dtheta ))            DEALLOCATE( dtheta,           STAT=ErrStatTmp)
       IF (ALLOCATED( weights ))           DEALLOCATE( weights,          STAT=ErrStatTmp)
 	  IF (ALLOCATED( normalizedWeight )) DEALLOCATE( normalizedWeight,  STAT=ErrStatTmp)
 	  IF (ALLOCATED( base ))             DEALLOCATE( base,              STAT=ErrStatTmp)
-
+!------
       IF (ALLOCATED( WaveS1SddArr ))      DEALLOCATE( WaveS1SddArr,     STAT=ErrStatTmp)
       IF (ALLOCATED( OmegaArr ))          DEALLOCATE( OmegaArr,         STAT=ErrStatTmp)
 
@@ -1663,8 +1670,10 @@ SUBROUTINE Waves_Init( InitInp, InitOut, WaveField, FileName, ErrStat, ErrMsg )
       TYPE(Waves_InitInputType),       INTENT(INOUT)  :: InitInp     !< Input data for initialization routine !NOTE: We are making this INOUT because UserWaveComponents_Init changes the value of InitInp%WaveDT
       TYPE(Waves_InitOutputType),      INTENT(  OUT)  :: InitOut     !< Output for initialization routine
       TYPE(SeaSt_WaveFieldType),       INTENT(INOUT)  :: WaveField   ! SeaState wave field type containing the wave field data
-	  ! ---ANTONIO---
+	  ! ------
+	  ! Modified by Antonio Medina: 15-05-2025
 	  CHARACTER(*),                    INTENT(  IN)   :: FileName    ! Input File Name
+	  !------
       INTEGER(IntKi),                  INTENT(  OUT)  :: ErrStat     !< Error status of the operation
       CHARACTER(*),                    INTENT(  OUT)  :: ErrMsg      !< Error message if ErrStat /= ErrID_None
 
@@ -1941,7 +1950,8 @@ SUBROUTINE CalculateWaveDirection(InitInp, InitOut, WaveField, ErrStat, ErrMsg )
 
    ! Local Variables
    REAL(SiKi),                       ALLOCATABLE   :: WvTheta(:)                                      !< Final set of wave directions (degrees)
-   ! --_ANTONIO---
+   ! ------
+   ! Modified by Antonio Medina: 15-05-2025
    REAL(SiKi)                                      :: WvSpreadCos2SConst                              !< Normalization constant for wave spreading function.
    REAL(SiKi),                       ALLOCATABLE   :: WvSpreadThetaIdx(:)                             !< Indices for wave directions
    INTEGER(IntKi)                                  :: WvSpreadFreqPerDir                              !< Number of wave frequencies per direction
@@ -1949,7 +1959,8 @@ SUBROUTINE CalculateWaveDirection(InitInp, InitOut, WaveField, ErrStat, ErrMsg )
    INTEGER                                         :: J                                               ! Generic index
    INTEGER                                         :: K                                               ! Generic index
    INTEGER                                         :: LastInd                                         ! Index into the arrays saved from the last call as a starting point for this call
-
+   !------
+   
    ! Variables for error handling
    INTEGER(IntKi)                                  :: ErrStatTmp                                      !< Temporary error status
    CHARACTER(ErrMsgLen)                            :: ErrMsgTmp                                       !< Temporary error message
@@ -2102,7 +2113,8 @@ SUBROUTINE CalculateWaveSpreading(InitInp, InitOut, WaveField, WvTheta, WvSpread
    TYPE(Waves_InitOutputType),      INTENT(INOUT)  :: InitOut     !< Output data
    TYPE(SeaSt_WaveFieldType),       INTENT(INOUT)  :: WaveField
    REAL(SiKi),         ALLOCATABLE, INTENT(  OUT)  :: WvTheta(:)  !< Final set of wave directions (degrees)
-   !---ANTONIO---
+   !------
+   ! Modified by Antonio Medina: 10-05-2025
    REAL(SiKi),         			    INTENT(  OUT)  :: WvSpreadCos2SConst                              !< Normalization constant for wave spreading function.
    INTEGER(IntKi),                  INTENT(  OUT)  :: ErrStat     !< Error status of the operation
    CHARACTER(*),                    INTENT(  OUT)  :: ErrMsg      !< Error message if ErrStat /= ErrID_None
@@ -2519,3 +2531,4 @@ END SUBROUTINE ConstrainedNewWaves
 !------------------------------------------------------------------------------------------------------------------------
 END MODULE Waves
 !**********************************************************************************************************************************
+
